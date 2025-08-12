@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsu8iut88ttna"]
+
+[ext_resource type="Script" uid="uid://b0ho6eu4u8c34" path="res://Main.gd" id="1_glv2v"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_glv2v")
+
+[node name="Square" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
