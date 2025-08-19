@@ -32,3 +32,9 @@ offset_bottom = 23.0
 [node name="RestartButton" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SquareTimer" type="Timer" parent="."]

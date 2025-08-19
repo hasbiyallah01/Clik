@@ -5,14 +5,17 @@ var score: int = 0
 var square_size: int = 64
 var time_left: float = 30.0
 var game_active: bool = true
+var lives: int = 3  # ❤️ Number of lives
 
 # --- Nodes ---
 @onready var square: ColorRect = $Square
 @onready var score_label: Label = $ScoreLabel
 @onready var timer_label: Label = $TimerLabel
+@onready var lives_label: Label = $LivesLabel
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var restart_button: Button = $RestartButton
 @onready var background: TextureRect = $Background
+@onready var square_timer: Timer = $SquareTimer   
 
 func _ready():
 	# Init background
@@ -33,11 +36,19 @@ func _ready():
 	timer_label.text = "Time: %d" % int(time_left)
 	timer_label.position = Vector2(10, 40)
 
+	lives_label.text = "Lives: %d" % lives
+	lives_label.position = Vector2(10, 70)
+
 	# Init restart button
 	restart_button.text = "Restart"
-	restart_button.position = Vector2(10, 70)
+	restart_button.position = Vector2(10, 100)
 	restart_button.hide()
 	restart_button.pressed.connect(_on_restart_pressed)
+
+	# Init square miss-timer
+	square_timer.wait_time = 1.5
+	square_timer.one_shot = true
+	square_timer.timeout.connect(_on_square_timeout)
 
 	# Start game
 	move_square()
@@ -51,7 +62,7 @@ func _process(delta):
 	time_left -= delta
 	timer_label.text = "Time: %d" % int(time_left)
 
-	# End game
+	# End game when time runs out
 	if time_left <= 0:
 		end_game()
 
@@ -79,6 +90,8 @@ func move_square():
 	# 🎨 Change square color each move
 	square.color = Color(randf(), randf(), randf())
 
+	# Restart the miss timer
+	square_timer.start()
 
 func _on_square_clicked(event):
 	if not game_active:
@@ -109,21 +122,37 @@ func _input(event):
 			score -= 1
 			score_label.text = "Score: %d" % score
 
+func _on_square_timeout():
+	if not game_active:
+		return
+
+	# Lose a life if square not clicked in time
+	lives -= 1
+	lives_label.text = "Lives: %d" % lives
+
+	if lives <= 0:
+		end_game()
+	else:
+		move_square() # keep game going
+
 func end_game():
 	game_active = false
 	timer_label.text = "Time: 0"
 	score_label.text += "   GAME OVER!"
 	square.hide()
+	square_timer.stop()
 	restart_button.show()
 
 func _on_restart_pressed():
 	# Reset state
 	score = 0
 	time_left = 30.0
+	lives = 3
 	game_active = true
 
 	score_label.text = "Score: 0"
 	timer_label.text = "Time: %d" % int(time_left)
+	lives_label.text = "Lives: %d" % lives
 
 	# Show square again
 	square.show()
