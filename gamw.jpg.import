@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bplfl80057q3y"
-path="res://.godot/imported/Click the Square.png-463509b58a24c745b3dba851b1839df0.ctex"
+uid="uid://cb8w7vqnx6ey0"
+path="res://.godot/imported/gamw.jpg-a82e24b48fd5445885c854f0c7c97df3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Click the Square.png"
-dest_files=["res://.godot/imported/Click the Square.png-463509b58a24c745b3dba851b1839df0.ctex"]
+source_file="res://gamw.jpg"
+dest_files=["res://.godot/imported/gamw.jpg-a82e24b48fd5445885c854f0c7c97df3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlyvxivbyyis2"
-path="res://.godot/imported/Click the Square.apple-touch-icon.png-0a33730bc341a88b48acc34f08a18732.ctex"
+uid="uid://crutnjaav4xjs"
+path="res://.godot/imported/game.jpg-958e7b641d3ecb5243b9a762fca75555.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Click the Square.apple-touch-icon.png"
-dest_files=["res://.godot/imported/Click the Square.apple-touch-icon.png-0a33730bc341a88b48acc34f08a18732.ctex"]
+source_file="res://game.jpg"
+dest_files=["res://.godot/imported/game.jpg-958e7b641d3ecb5243b9a762fca75555.ctex"]
 
 [params]
 
